@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get the latest news from Bangladesh and around the world. Breaking news, politics, business, sports and entertainment.">
+    <meta name="keywords" content="Bangladesh news, latest news, breaking news, Dhaka news, Bangladesh politics, Bangladesh sports">
+    <meta name="author" content="Newsbeat">
+    <meta property="og:title" content="Newsbeat - Latest Bangladesh News">
+    <meta property="og:description" content="Your trusted source for the latest news from Bangladesh and around the world">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://newsbeat.unaux.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Newsbeat - Latest Bangladesh News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        body.blur {
+            overflow: hidden;
+        }
+        
+        body.blur::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #1a4b8c, #2b6cb0);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ffce00;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        .date-time {
+            font-size: 14px;
+        }
+        
+        /* Navigation */
+        nav {
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        .nav-menu a:hover {
+            color: #ffce00;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            width: 250px;
+        }
+        
+        .search-box button {
+            background: #ffce00;
+            color: #1a4b8c;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: flex-end;
+            color: white;
+            margin: 20px 0 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+        
+        .hero-content {
+            position: relative;
+            padding: 30px;
+            width: 100%;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            max-width: 800px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            background: #ffce00;
+            color: #1a4b8c;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        /* Breaking News Ticker */
+        .breaking-news {
+            background: #e53e3e;
+            color: white;
+            padding: 12px 0;
+            margin-bottom: 30px;
+        }
+        
+        .ticker-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .ticker-label {
+            background: #ffce00;
+            color: #1a4b8c;
+            padding: 5px 15px;
+            font-weight: 700;
+            margin-right: 15px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        
+        .ticker-content {
+            flex-grow: 1;
+            overflow: hidden;
+            height: 24px;
+            position: relative;
+        }
+        
+        .ticker-content ul {
+            position: absolute;
+            list-style: none;
+            animation: ticker 25s infinite linear;
+        }
+        
+        .ticker-content li {
+            padding: 3px 0;
+            white-space: nowrap;
+        }
+        
+        @keyframes ticker {
+            0% { top: 0; }
+            100% { top: -120px; }
+        }
+        
+        /* News Grid */
+        .section-title {
+            font-size: 24px;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2b6cb0;
+            color: #1a4b8c;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-img {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-img img {
+            transform: scale(1.05);
+        }
+        
+        .category-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ffce00;
+            color: #1a4b8c;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #2c5282;
+        }
+        
+        .news-content p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .pagination a {
+            color: #1a4b8c;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+        }
+        
+        .pagination a.active {
+            background: #1a4b8c;
+            color: white;
+            border: 1px solid #1a4b8c;
+        }
+        
+        .pagination a:hover:not(.active) {
+            background: #f1f1f1;
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-widget {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffce00;
+            color: #1a4b8c;
+        }
+        
+        .popular-news {
+            list-style: none;
+        }
+        
+        .popular-news li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .popular-news li:last-child {
+            border-bottom: none;
+        }
+        
+        .popular-news a {
+            color: #2c5282;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+        
+        .popular-news a:hover {
+            color: #1a4b8c;
+            text-decoration: underline;
+        }
+        
+        .popular-news span {
+            display: block;
+            color: #888;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        /* Weather Widget */
+        .weather-widget {
+            text-align: center;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        
+        .weather-widget i {
+            font-size: 42px;
+            color: #ffce00;
+            margin-bottom: 10px;
+        }
+        
+        .temperature {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2b6cb0;
+        }
+        
+        .weather-details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        
+        .weather-details div {
+            text-align: center;
+        }
+        
+        .weather-details div span {
+            display: block;
+            font-size: 12px;
+            color: #718096;
+        }
+        
+        .weather-details div strong {
+            color: #2b6cb0;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a4b8c;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffce00;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: #ffce00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                height: 350px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .search-box input {
+                width: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date-time {
+                margin-top: 10px;
+            }
+            
+            nav {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+            
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .search-box {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .search-box input {
+                width: 70%;
+            }
+        }
+        
+        /* Ad Placeholders */
+        .ad-placeholder {
+            background: #f1f5f9;
+            border: 1px dashed #cbd5e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: #718096;
+            margin: 20px 0;
+        }
+        
+        .ad-label {
+            font-size: 12px;
+            color: #a0aec0;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        /* News Popup */
+        .news-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            background: white;
+            border-radius: 12px;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .news-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .popup-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .popup-header h2 {
+            color: #1a4b8c;
+            font-size: 24px;
+            margin: 0;
+            padding-right: 30px;
+        }
+        
+        .close-popup {
+            background: #e53e3e;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        
+        .close-popup:hover {
+            background: #c53030;
+        }
+        
+        .popup-content {
+            padding: 25px;
+        }
+        
+        .popup-image {
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .popup-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .popup-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .popup-text {
+            line-height: 1.8;
+            color: #2d3748;
+        }
+        
+        .popup-text p {
+            margin-bottom: 20px;
+        }
+        
+        .popup-category {
+            background: #ffce00;
+            color: #1a4b8c;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <a href="#" class="logo"><i class="fas fa-newspaper"></i>News<span>beat</span></a>
+                <div class="date-time">
+                    <span id="current-date"></span> | <span id="current-time"></span>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-landmark"></i> Politics</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Business</a></li>
+                    <li><a href="#"><i class="fas fa-futbol"></i> Sports</a></li>
+                    <li><a href="#"><i class="fas fa-film"></i> Entertainment</a></li>
+                    <li><a href="#"><i class="fas fa-microchip"></i> Technology</a></li>
+                    <li><a href="#"><i class="fas fa-globe"></i> World</a></li>
+                </ul>
+                <div class="search-box">
+                    <input type="text" placeholder="Search for news..." id="search-input">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="container">
+            <div class="ticker-container">
+                <div class="ticker-label">BREAKING NEWS</div>
+                <div class="ticker-content">
+                    <ul>
+                        <li>Bangladesh signs new trade agreement with neighboring countries - Economic boost expected</li>
+                        <li>National budget 2025 to be presented in parliament next week</li>
+                        <li>Bangladesh cricket team wins series against South Africa</li>
+                        <li>New metro rail line to open in Dhaka next month</li>
+                        <li>Government announces new policies to combat climate change</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <div class="hero" id="hero-news">
+            <div class="hero-content">
+                <h1>Bangladesh Economy Grows by 7.2% in 2025</h1>
+                <p>Government announces new initiatives to boost investment and create jobs across multiple sectors</p>
+                <a href="#" class="read-more">Read Full Story</a>
+            </div>
+        </div>
+
+        <!-- Ad Placeholder -->
+        <div class="ad-placeholder">
+            Advertisement Space - 728x90
+            <div class="ad-label">Google AdSense</div>
+        </div>
+
+        <div class="content-with-sidebar">
+            <div class="main-content">
+                <!-- Latest News Section -->
+                <h2 class="section-title"><i class="fas fa-bolt"></i> Latest News</h2>
+                <div class="news-grid">
+                    <article class="news-card" data-news-id="1">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1566378246598-5b11a0d486cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Politics">
+                            <div class="category-tag">Politics</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>New Cabinet Reshuffle Announced</h3>
+                            <p>Prime Minister announces changes to cabinet with focus on economic development and infrastructure.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 2 hours ago</span>
+                                <span><i class="far fa-eye"></i> 1,245 views</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card" data-news-id="2">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Business">
+                            <div class="category-tag">Business</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Stock Market Hits All-Time High</h3>
+                            <p>DSEX index crosses 7,500 points as investor confidence grows in the market.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 4 hours ago</span>
+                                <span><i class="far fa-eye"></i> 2,100 views</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card" data-news-id="3">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports">
+                            <div class="category-tag">Sports</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Bangladesh Wins SAFF Championship</h3>
+                            <p>National football team defeats India in thrilling final match with 3-2 scoreline.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 6 hours ago</span>
+                                <span><i class="far fa-eye"></i> 3,450 views</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div class="ad-placeholder">
+                    Advertisement Space - 728x90
+                    <div class="ad-label">Google AdSense</div>
+                </div>
+
+                <!-- More News Sections -->
+                <h2 class="section-title"><i class="fas fa-landmark"></i> Politics</h2>
+                <div class="news-grid">
+                    <article class="news-card" data-news-id="4">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1592520113018-180c8bc831c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Politics">
+                            <div class="category-tag">Politics</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Opposition Party Announces New Leadership</h3>
+                            <p>Elections held for key positions within the main opposition party after recent conference.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 8 hours ago</span>
+                                <span><i class="far fa-eye"></i> 1,890 views</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card" data-news-id="5">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Election">
+                            <div class="category-tag">Election</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Upcoming City Corporation Elections</h3>
+                            <p>Preparations underway for elections in Dhaka and Chittagong with security measures.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 1 day ago</span>
+                                <span><i class="far fa-eye"></i> 3,200 views</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card" data-news-id="6">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1588690154757-badf464e839d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Diplomacy">
+                            <div class="category-tag">Diplomacy</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Foreign Minister Visits China</h3>
+                            <p>Bilateral talks focus on trade and infrastructure projects between the two countries.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 1 day ago</span>
+                                <span><i class="far fa-eye"></i> 2,500 views</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">&raquo;</a>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div class="ad-placeholder">
+                    Advertisement Space - 300x250
+                    <div class="ad-label">Google AdSense</div>
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> Business & Economy</h2>
+                <div class="news-grid">
+                    <article class="news-card" data-news-id="7">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Business">
+                            <div class="category-tag">Business</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Garment Exports Reach Record High</h3>
+                            <p>Industry reports 15% growth in first quarter of 2025 compared to previous year.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 1 day ago</span>
+                                <span><i class="far fa-eye"></i> 2,100 views</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card" data-news-id="8">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Technology">
+                            <div class="category-tag">Technology</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Tech Startups Receive Funding Boost</h3>
+                            <p>Venture capital firms invest $50 million in local startups focusing on fintech and e-commerce.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 2 days ago</span>
+                                <span><i class="far fa-eye"></i> 1,800 views</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card" data-news-id="9">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Economy">
+                            <div class="category-tag">Economy</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Central Bank Keeps Interest Rates Unchanged</h3>
+                            <p>Monetary policy focused on controlling inflation while supporting economic growth.</p>
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> 2 days ago</span>
+                                <span><i class="far fa-eye"></i> 2,400 views</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <!-- Popular News Widget -->
+                <div class="sidebar-widget">
+                    <h3>Most Popular News</h3>
+                    <ul class="popular-news">
+                        <li data-news-id="10">
+                            <a href="#">Bangladesh Wins International Tourism Award</a>
+                            <span><i class="far fa-clock"></i> 5 hours ago | 3,450 views</span>
+                        </li>
+                        <li data-news-id="11">
+                            <a href="#">New Education Policy Approved by Cabinet</a>
+                            <span><i class="far fa-clock"></i> 7 hours ago | 2,890 views</span>
+                        </li>
+                        <li data-news-id="12">
+                            <a href="#">Dhaka Airport to Get New Terminal Next Year</a>
+                            <span><i class="far fa-clock"></i> 10 hours ago | 2,560 views</span>
+                        </li>
+                        <li data-news-id="13">
+                            <a href="#">Flood Situation Improves in Northern Districts</a>
+                            <span><i class="far fa-clock"></i> 1 day ago | 2,120 views</span>
+                        </li>
+                        <li data-news-id="14">
+                            <a href="#">Government to Launch New Health Insurance Scheme</a>
+                            <span><i class="far fa-clock"></i> 1 day ago | 1,980 views</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div class="ad-placeholder">
+                    <div class="ad-label"></div>
+                </div>
+
+                <!-- Weather Widget -->
+                <div class="sidebar-widget">
+                    <h3>Weather in Dhaka</h3>
+                    <div class="weather-widget">
+                        <i class="fas fa-sun"></i>
+                        <div class="temperature">32°C</div>
+                        <p>Mostly sunny</p>
+                        <div class="weather-details">
+                            <div>
+                                <span>Humidity</span>
+                                <strong>65%</strong>
+                            </div>
+                            <div>
+                                <span>Wind</span>
+                                <strong>8 km/h</strong>
+                            </div>
+                            <div>
+                                <span>Rain</span>
+                                <strong>10%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Widget -->
+                <div class="sidebar-widget">
+                    <h3>News Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Politics (124)</a></li>
+                        <li><a href="#">Business (98)</a></li>
+                        <li><a href="#">Sports (87)</a></li>
+                        <li><a href="#">Entertainment (76)</a></li>
+                        <li><a href="#">Technology (65)</a></li>
+                        <li><a href="#">World News (112)</a></li>
+                        <li><a href="#">Health (54)</a></li>
+                        <li><a href="#">Education (43)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Newsbeat</h3>
+                    <p>Newsbeat is your trusted source for the latest news from Bangladesh and around the world. We provide accurate, timely news coverage across all categories.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Advertise With Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p>Follow us on social media for the latest updates:</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Newsbeat. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- News Popup -->
+    <div class="news-popup" id="news-popup">
+        <div class="popup-header">
+            <h2 id="popup-title">News Title</h2>
+            <div class="close-popup" id="close-popup">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="popup-content">
+            <div class="popup-category" id="popup-category">Politics</div>
+            <div class="popup-meta">
+                <span id="popup-date"><i class="far fa-clock"></i> 2 hours ago</span>
+                <span id="popup-views"><i class="far fa-eye"></i> 1,245 views</span>
+            </div>
+            <div class="popup-image">
+                <img src="" alt="News Image" id="popup-image">
+            </div>
+            <div class="popup-text" id="popup-text">
+                <p>News content will be loaded here...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // News data - in a real application, this would come from a database
+        const newsData = {
+            1: {
+                title: "New Cabinet Reshuffle Announced",
+                category: "Politics",
+                image: "https://images.unsplash.com/photo-1566378246598-5b11a0d486cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "2 hours ago",
+                views: "1,245 views",
+                content: `<p>Prime Minister Sheikh Hasina announced a major cabinet reshuffle today, bringing in new faces and reassigning several key portfolios. The changes are seen as an effort to boost economic development and infrastructure projects across the country.</p>
+                <p>The most significant change is the appointment of a new Finance Minister, who previously served as the Governor of Bangladesh Bank. This move is expected to bring fresh perspectives to the country's economic policies.</p>
+                <p>Several younger ministers have been promoted to more prominent roles, signaling a generational shift in the government's leadership. The Prime Minister stated that these changes are necessary to address the challenges of the coming years and to implement the government's vision for a developed Bangladesh by 2041.</p>
+                <p>Opposition parties have criticized the reshuffle as merely cosmetic, claiming that more substantial reforms are needed to address the country's pressing issues. Political analysts, however, see this as a strategic move to reinvigorate the administration ahead of the next election cycle.</p>`
+            },
+            2: {
+                title: "Stock Market Hits All-Time High",
+                category: "Business",
+                image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "4 hours ago",
+                views: "2,100 views",
+                content: `<p>The Dhaka Stock Exchange (DSE) reached a historic milestone today as the DSEX index crossed the 7,500-point mark for the first time ever. This represents a significant recovery from the pandemic-induced lows of previous years and reflects growing investor confidence in the Bangladeshi economy.</p>
+                <p>Banking and pharmaceutical sectors led the rally, with several blue-chip companies seeing their share prices increase by more than 5% during today's trading session. Market analysts attribute this bullish trend to strong corporate earnings, stable macroeconomic indicators, and increased foreign investment.</p>
+                <p>"The market is responding positively to the government's economic policies and the overall growth trajectory of the country," said a senior market analyst. "We're seeing particularly strong performance in sectors that are benefiting from the government's infrastructure push."</p>
+                <p>Small investors have also been returning to the market, encouraged by the sustained upward trend. The Securities and Exchange Commission has welcomed the development but also cautioned investors to make informed decisions and avoid speculative trading.</p>`
+            },
+            3: {
+                title: "Bangladesh Wins SAFF Championship",
+                category: "Sports",
+                image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "6 hours ago",
+                views: "3,450 views",
+                content: `<p>In a thrilling final match that went into extra time, the Bangladesh national football team defeated India 3-2 to claim the SAFF Championship title. This victory marks Bangladesh's first SAFF Championship win in 16 years, sparking celebrations across the country.</p>
+                <p>The match, held at the Bangabandhu National Stadium in Dhaka, saw a capacity crowd of 36,000 spectators cheering on the home team. After a tense 1-1 draw in regular time, Bangladesh scored two quick goals in extra time before India managed to pull one back, setting up a nervous final few minutes.</p>
+                <p>Team captain Jamal Bhuyan led by example, scoring the winning goal in the 108th minute. "This is for the people of Bangladesh," an emotional Bhuyan said after the match. "We've worked so hard for this moment, and I'm incredibly proud of every player on this team."</p>
+                <p>The victory has ignited football fever across the nation, with thousands of fans taking to the streets to celebrate. Prime Minister Sheikh Hasina congratulated the team, announcing a special reward for the players and coaching staff. This win is expected to provide a significant boost to football development in the country.</p>`
+            },
+            4: {
+                title: "Opposition Party Announces New Leadership",
+                category: "Politics",
+                image: "https://images.unsplash.com/photo-1592520113018-180c8bc831c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "8 hours ago",
+                views: "1,890 views",
+                content: `<p>The main opposition party, Bangladesh Nationalist Party (BNP), has elected a new leadership team following its national council held today. The election saw a mix of experienced politicians and fresh faces taking key positions within the party hierarchy.</p>
+                <p>Notably, the party has appointed a new Secretary General, who is seen as a consensus candidate capable of unifying different factions within the party. This move is interpreted by political analysts as an attempt to rebuild the party's organizational strength ahead of the next general elections.</p>
+                <p>In his acceptance speech, the newly elected Chairperson emphasized the need for democratic reforms and vowed to continue what he described as "the struggle for restoring democracy" in the country. He also called for the release of what he termed as "political prisoners" and for dialogue between all political parties.</p>
+                <p>The ruling party has cautiously welcomed the leadership changes, with a senior minister expressing hope that the new opposition leadership would engage in constructive politics. International observers have also taken note of the development, viewing it as a potentially significant moment in Bangladesh's political landscape.</p>`
+            },
+            5: {
+                title: "Upcoming City Corporation Elections",
+                category: "Election",
+                image: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "1 day ago",
+                views: "3,200 views",
+                content: `<p>The Election Commission has announced the schedule for the upcoming elections in Dhaka North, Dhaka South, and Chittagong City Corporations. Voting is set to take place in three months, with the commission promising strict measures to ensure free and fair elections.</p>
+                <p>This will be the first major electoral test for both the ruling party and the opposition since the last general elections. Political analysts are watching these local government elections closely as they are often seen as indicators of public sentiment ahead of national polls.</p>
+                <p>The Commission has outlined a comprehensive security plan involving law enforcement agencies to maintain order during the election period. Additionally, new electronic voting machines will be used in select centers as part of a pilot program aimed at modernizing the electoral process.</p>
+                <p>All major political parties have welcomed the announcement and stated their commitment to participatory elections. Civil society groups have called for transparency and have offered to deploy election observers to ensure the integrity of the process.</p>`
+            }
+        };
+
+        // DOM Elements
+        const newsPopup = document.getElementById('news-popup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupCategory = document.getElementById('popup-category');
+        const popupImage = document.getElementById('popup-image');
+        const popupDate = document.getElementById('popup-date');
+        const popupViews = document.getElementById('popup-views');
+        const popupText = document.getElementById('popup-text');
+        const closePopupBtn = document.getElementById('close-popup');
+        const newsCards = document.querySelectorAll('.news-card');
+        const popularNews = document.querySelectorAll('.popular-news li');
+        const heroNews = document.getElementById('hero-news');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const body = document.body;
+
+        // Open popup function
+        function openNewsPopup(newsId) {
+            const news = newsData[newsId];
+            if (news) {
+                popupTitle.textContent = news.title;
+                popupCategory.textContent = news.category;
+                popupImage.src = news.image;
+                popupDate.innerHTML = `<i class="far fa-clock"></i> ${news.date}`;
+                popupViews.innerHTML = `<i class="far fa-eye"></i> ${news.views}`;
+                popupText.innerHTML = news.content;
+                
+                newsPopup.classList.add('active');
+                body.classList.add('blur');
+            }
+        }
+
+        // Close popup function
+        function closeNewsPopup() {
+            newsPopup.classList.remove('active');
+            body.classList.remove('blur');
+        }
+
+        // Add event listeners to news cards
+        newsCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const newsId = card.getAttribute('data-news-id');
+                openNewsPopup(newsId);
+            });
+        });
+
+        // Add event listeners to popular news items
+        popularNews.forEach(item => {
+            item.addEventListener('click', () => {
+                const newsId = item.getAttribute('data-news-id');
+                openNewsPopup(newsId);
+            });
+        });
+
+        // Add event listener to hero news
+        heroNews.addEventListener('click', () => {
+            openNewsPopup(1); // Using the first news item for the hero
+        });
+
+        // Close popup when close button is clicked
+        closePopupBtn.addEventListener('click', closeNewsPopup);
+
+        // Close popup when clicking outside of it
+        newsPopup.addEventListener('click', (e) => {
+            if (e.target === newsPopup) {
+                closeNewsPopup();
+            }
+        });
+
+        // Search functionality
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            if (searchTerm) {
+                alert(`Searching for: ${searchTerm}`);
+                searchInput.value = '';
+            }
+        }
+
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US');
+        }
+        
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+        
+        // Simulate news ticker
+        const tickerItems = document.querySelectorAll('.ticker-content ul li');
+        if (tickerItems.length > 0) {
+            const tickerHeight = tickerItems[0].offsetHeight;
+            document.querySelector('.ticker-content ul').style.height = (tickerItems.length * tickerHeight) + 'px';
+        }
+    </script>
+</body>
+</html>
